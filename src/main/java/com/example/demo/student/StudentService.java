@@ -1,5 +1,6 @@
 package com.example.demo.student;
 
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,15 @@ public class StudentService {
             throw new IllegalStateException("Email already exists");
         }
         studentRepository.save(student);
+    }
+
+    @Transactional
+    public void updateStudent(Long studentId, Student studentInfo) {
+        studentRepository.findById(studentId).ifPresent(student -> {
+            student.setEmail(studentInfo.getEmail());
+
+            studentRepository.save(student);
+        });
     }
 
     public void removeStudent(Long studentId) {
