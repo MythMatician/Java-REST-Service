@@ -1,6 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.controllers;
 
-import jakarta.persistence.Id;
+import com.example.demo.services.StudentService;
+import com.example.demo.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

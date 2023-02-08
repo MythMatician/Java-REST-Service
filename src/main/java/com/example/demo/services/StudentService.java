@@ -1,10 +1,10 @@
-package com.example.demo.student;
+package com.example.demo.services;
 
 import jakarta.transaction.Transactional;
-import org.springframework.stereotype.Component;
+import com.example.demo.models.Student;
 import org.springframework.stereotype.Service;
+import com.example.demo.repos.StudentRepository;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +19,7 @@ public class StudentService {
     }
 
     public void addStudent(Student student) {
-        Optional< Student> studentByEmail = studentRepository.findStudentByEmail(student.getEmail());
+        Optional<Student> studentByEmail = studentRepository.findStudentByEmail(student.getEmail());
         if(studentByEmail.isPresent()) {
             throw new IllegalStateException("Email already exists");
         }
